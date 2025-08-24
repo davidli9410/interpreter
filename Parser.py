@@ -31,7 +31,7 @@ class Parser:
         
         if tokens and tokens[0] in ["-", "!"]:
             token = tokens.pop(0)
-            operand = self.parse_basic(tokens)
+            operand = self.parse_unary_expression(tokens)
             return u_op_node(token,operand)
         
         return self.parse_basic(tokens)
