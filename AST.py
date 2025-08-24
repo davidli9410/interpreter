@@ -24,8 +24,19 @@ class ComparisonNode(ASTNode):
 
         if self.comparator == "equals":
             return left_val == right_val
-        return None
-
+        
+        elif self.comparator == "lt" :
+            return left_val < right_val
+        elif self.comparator == "lte":
+            return left_val <= right_val
+        elif self.comparator == "gt":
+            return left_val > right_val
+        elif self.comparator == "gte":
+            return left_val >= right_val
+        elif self.comparator == "nequals":
+            return left_val != right_val
+        else:
+            raise ValueError(f"Unknown comparator: {self.comparator}")
     
 class OperatorNode(ASTNode):
     def __init__(self,operator,left,right):
@@ -48,7 +59,7 @@ class OperatorNode(ASTNode):
         elif self.operator == "-":
             return left_val - right_val
         else:
-            raise ValueError("Unknown operator")
+            raise ValueError(f"Unknown operator: {self.operator}")
 
 class UnaryOpNode(ASTNode):
     def __init__(self, operator, operand): 
@@ -63,13 +74,13 @@ class UnaryOpNode(ASTNode):
         if self.operator == "!":
             return not val
         else:
-            raise ValueError("Unknown unary operator")
+            raise ValueError(f"Unknown unary operator: {self.operator}")
 class VariableNode(ASTNode):
     def __init__(self,name):
         self.name = name
     def eval(self,env):
         if self.name not in env:
-            raise ValueError("Variable not defined")
+            raise ValueError(f"Variable not defined: {self.variable}")
         return env[self.name]
 class AssignmentNode(ASTNode):
     def __init__(self, variable, value):
