@@ -1,4 +1,6 @@
-# Simple Mathematical Interpreter
+# Simple Mathematical Interpreter - SMI
+
+SMI is a fully featured interpreter for a simple mathematical language, built from scratch in Python. This project showcases the implementation of tokenization, parsing, evaluation, and the core principles of how programming languages work.
 
 ## Features
 
