@@ -5,10 +5,10 @@ SMI is a fully featured interpreter for a simple mathematical language, built fr
 ## Features
 
 -   **Arithmetic Operations:** Supports addition (`+`), subtraction (`-`), multiplication (`*`), division (`/`), and exponentiation (`^`).
--   **Correct Operator Precedence:** Follows standard PEMDAS/BODMAS rules, correctly evaluating expressions like `5 + 3 * 2` to `11`.
--   **Correct Associativity:** Handles left-associative operators (`+`, `-`, `*`, `/`) and right-associative operators (`^`) correctly. For example, `2 ^ 3 ^ 2` is evaluated as `2 ^ (3 ^ 2)`.
--   **Parentheses:** Supports nested parentheses for grouping expressions, like `(5 + 3) * 2`.
--   **Unary Operators:** Correctly parses and evaluates unary negation, such as `-5` or `5 + -3`.
+-   **Correct Operator Precedence:** Follows standard PEMDAS rules.
+-   **Correct Associativity:** Handles left-associative operators (`+`, `-`, `*`, `/`) and right-associative operators (`^`) correctly.
+-   **Parentheses:** Supports nested parentheses for grouping expressions.
+-   **Unary Operators:** Correctly parses and evaluates unary negation.
 -   **Variables:** Allows for variable assignment and usage throughout a session.
     ```
     define x = 10
