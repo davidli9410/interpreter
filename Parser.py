@@ -21,18 +21,42 @@ class Parser:
         # Parsing logic
         pass
     def parse_unary_expression(self, tokens):
-        token = tokens.pop(0)
-        if token in ["-", "!"]:
+        
+        if tokens and tokens[0] in ["-", "!"]:
+            token = tokens.pop(0)
             operand = self.parse_basic(tokens)
             return u_op_node(token,operand)
-        else:
-            raise ValueError("Unknown unary operator")
+        
+        return self.parse_basic(tokens)
+    
 
-    def parse_binary_expression(self, tokens):
-        pass
-
+    def parse_high(self,tokens):
+        if tokens:
+            left = self.parse_unary_expression(tokens)
+        while tokens and tokens[0] == "^":
+            token = tokens.pop(0)
+            right = self.parse_high(tokens)
+            left = bin_op_node(token,left,right)
+        return left
+    def parse_med(self, tokens):
+        if tokens:
+            left = self.parse_unary_expression(tokens)
+        while tokens and tokens[0] in ["*", "/"]:
+            token = tokens.pop(0)
+            right = self.parse_high(tokens)
+            left = bin_op_node(token,left,right)
+        return left
+    def parse_low(self,tokens):
+        if tokens:
+            left = self.parse_unary_expression(tokens)
+        while tokens and tokens[0] in ["+", "-"]:
+            token = tokens.pop(0)
+            right = self.parse_med(tokens)
+            left = bin_op_node(token,left,right)
+        return left
     def parse_basic(self, tokens):
-
+        if not tokens:
+            raise ValueError("Unexpected Termination")
         token = tokens.pop(0)
 
         if self.helpers.is_number(token):
