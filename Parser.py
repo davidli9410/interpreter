@@ -16,7 +16,7 @@ class Parser:
 
         tokens = self.tokenize(expression)
 
-        if "define" in tokens and "=" in tokens:
+        if "define" in tokens and "as" in tokens:
             return self.parse_variable_assignment(tokens)
         else :
             return self.parse_low(tokens)
@@ -66,7 +66,7 @@ class Parser:
     
     def parse_variable_assignment(self,tokens):
 
-        if len(tokens) >= 4 and tokens[0] == "define" and tokens[2] == "=":
+        if len(tokens) >= 4 and tokens[0] == "define" and tokens[2] == "as":
             tokens.pop(0)
             var = tokens.pop(0)
             tokens.pop(0)

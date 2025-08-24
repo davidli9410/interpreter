@@ -28,7 +28,7 @@
 2 ^ -2
 -(-5)
 --5
-define x = 5 ^ 2
-define y = 10
-define z = x + y
-define w = x + y + z
+define x as 5 ^ 2
+define y as 10
+define z as x + y
+define w as x + y + z

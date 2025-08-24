@@ -7,6 +7,26 @@ class NumberNode(ASTNode):
     def eval(self, env):
         return float(self.value)
     
+class BooleanNode(ASTNode):
+    def __init__(self, value):
+        self.value = value
+    def eval(self,env):
+        return bool(self.value)
+    
+class ComparisonNode(ASTNode):
+    def __init__(self,comparator,left,right):
+        self.comparator = comparator
+        self.left = left
+        self.right = right
+    def eval(self,env):
+        left_val = self.left.eval(env)
+        right_val = self.right.eval(env)
+
+        if self.comparator == "equals":
+            return left_val == right_val
+        return None
+
+    
 class OperatorNode(ASTNode):
     def __init__(self,operator,left,right):
         self.operator = operator

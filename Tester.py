@@ -41,10 +41,10 @@ class Tester:
 
 
         variable_tests = [
-            ("define x = 5", 5.0),                    # Simple assignment
-            ("define y = 10", 10.0),                  # Another assignment
-            ("define z = x + y", 15.0),               # Assignment with variables
-            ("define w = x + y + z", 30.0)
+            ("define x as 5", 5.0),                    # Simple assignment
+            ("define y as 10", 10.0),                  # Another assignment
+            ("define z as x + y", 15.0),               # Assignment with variables
+            ("define w as x + y + z", 30.0)
         ]
         
         all_tests = [
