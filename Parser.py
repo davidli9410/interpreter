@@ -18,8 +18,7 @@ class Parser:
         return processed.split()
     
     def parse_expression(self, tokens):
-        # Parsing logic
-        pass
+        return self.parse_low(tokens)
     def parse_unary_expression(self, tokens):
         
         if tokens and tokens[0] in ["-", "!"]:
