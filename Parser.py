@@ -4,6 +4,8 @@ from AST import UnaryOpNode as u_op_node
 from AST import VariableNode as v_node
 from AST import NumberNode as n_node
 from AST import AssignmentNode as a_node
+from AST import BooleanNode as b_node
+from AST import ComparisonNode as c_node
 
 class Parser:
     def __init__(self):
@@ -18,6 +20,8 @@ class Parser:
 
         if "define" in tokens and "as" in tokens:
             return self.parse_variable_assignment(tokens)
+        elif "equals" in tokens or "nequals" in tokens or "lt" in tokens or "lte" in tokens or "gt" in tokens or "gte" in tokens:
+            return self.parse_comparison(tokens)
         else :
             return self.parse_low(tokens)
     
@@ -70,10 +74,18 @@ class Parser:
             tokens.pop(0)
             var = tokens.pop(0)
             tokens.pop(0)
-            assignment_val = self.parse_low(tokens)
+            assignment_val = self.parse_comparison(tokens)
             return a_node(v_node(var), assignment_val)
         else:
             return self.parse_low(tokens)
+    def parse_comparison(self,tokens):
+        left = self.parse_low(tokens)
+        while tokens and tokens[0] in ["equals", "nequals", "lt", "lte", "gt", "gte"]:
+            comparator = tokens.pop(0)
+            right = self.parse_low(tokens)
+            left = c_node(comparator,left,right)
+        return left
+            
     
     def parse_basic(self, tokens):
 
@@ -85,8 +97,10 @@ class Parser:
             return n_node(token)
         elif self.helpers.is_variable(token):
             return v_node(token)
+        elif self.helpers.is_boolean(token):
+            return b_node(token)
         elif token == "(":
-            expression = self.parse_low(tokens)
+            expression = self.parse_comparison(tokens)
             if not tokens or tokens.pop(0) != ')':
                 raise ValueError("Mismatched parentheses: expected ')'")
             return expression
