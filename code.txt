@@ -35,3 +35,6 @@ define w as x + y + z
 1 equals 2
 5 + 3 equals 8
 (15 + 3) * 3 equals 54
+true equals true
+(1 + 2) equals 3 equals true
+(1 + 2) equals 3 equals false

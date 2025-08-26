@@ -11,7 +11,12 @@ class BooleanNode(ASTNode):
     def __init__(self, value):
         self.value = value
     def eval(self,env):
-        return bool(self.value)
+        if self.value == "true":
+            return True
+        elif self.value == "false":
+            return False
+        else:
+            raise ValueError(f"Unknown boolean: {self.value}")
     
 class ComparisonNode(ASTNode):
     def __init__(self,comparator,left,right):

@@ -88,17 +88,17 @@ class Parser:
             
     
     def parse_basic(self, tokens):
-
         if not tokens:
             raise ValueError("Unexpected Termination")
         token = tokens.pop(0)
-
-        if self.helpers.is_number(token):
+        if self.helpers.is_boolean(token):
+            return b_node(token)
+        elif self.helpers.is_number(token):
             return n_node(token)
         elif self.helpers.is_variable(token):
             return v_node(token)
-        elif self.helpers.is_boolean(token):
-            return b_node(token)
+        
+            
         elif token == "(":
             expression = self.parse_comparison(tokens)
             if not tokens or tokens.pop(0) != ')':
