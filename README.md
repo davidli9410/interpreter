@@ -73,5 +73,5 @@ An **environment** (a simple dictionary) is passed through the evaluation proces
 ## Planned Improvements
 
 -   **Interactive REPL:** Create a true Read-Eval-Print Loop so the interpreter can be used interactively from the command line.
--   **More Data Types:** Add support for Booleans, strings, and lists.
+-   **More Data Types:** Add support for strings, lists, and functions.
 -   **Conditional Logic:** Implement `if/else` statements.
