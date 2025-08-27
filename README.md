@@ -42,13 +42,14 @@ Parser -> Abstract Syntax Tree
     -   `parse_comparison` handles `equals`, `nequals`, `lt`, `lte`, `gt`, `gte`.
     -   `parse_variable_assignment` handles variable definition.
     
+    All these parsing functions are called in a hierarchical order such that each expression is evaluated in accordance to operator precedence.
+
     The core arithmetic parsing functions are:
     -   `parse_low` 
     -   `parse_med` 
     -   `parse_high`
+    
     This core parsing hierarchy enforces the order of operations. For example, in 5 + 3 * 2, parse_low would first be called, which would call parse_med on the right of the `+`. parse_med would return an operator node containing `3, 2, and *`, which would represent that multiplication. Then, the original `+` would be evaluated, resulting in an AST following PEMDAS.
-
-    All these parsing functions are called in a hierarchical order such that each expression is evaluated in accordance to operator precedence.
 
 The output of the parser is the root node of the AST. For `5 + 3 * 2`, the tree would look like this:
 
