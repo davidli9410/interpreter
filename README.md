@@ -23,17 +23,6 @@ This is a fully featured interpreter for a simple, readable mathematical languag
 -   `AST.py`: Defines the class structure for the nodes of the Abstract Syntax Tree (e.g., `NumberNode`, `OperatorNode`, `AssignmentNode`). Also includes evaluation methods for each type of Node.
 -   `Evaluator.py`: A simple wrapper that kicks off the evaluation process on the root node of the AST.
 
-
-## How to Run
-
-The simplest way to see the interpreter in action is to run the test suite.
-
-```bash
-git clone 
-cd interpreter
-python Tester.py
-```
-
 ## How It Works
 
 ### 1. Parsing
@@ -70,8 +59,32 @@ Once the AST is built, the evaluation is a simple recursive process.
 
 An **environment** (a simple dictionary) is passed through the evaluation process to keep track of variable assignments.
 
+
+## How to Run
+
+The simplest way to see the interpreter in action is to run the test suite.
+
+```bash
+git clone 
+cd interpreter
+python REPL_tester.py
+```
+
+## Syntax Guide
+
+Syntax is defined as follows:
+
+-   To perform simple arithmetic, simply type the expression out i.e. `2 + 3 * 5` -> `17`
+-   To assign a variable x to a number 5, say `define x as 5`
+-   To compare two objects (same as python ==), say, for example, `1 equals 1`
+-   In the opposite case, say `1 nequals 1`
+-   To compare values of magnitude i.e. `<, <=, >, >=` in python, say `lt, lte, gt, gte`. For example, `2 gt 3` -> `False`
+-   For unary operators on a single value or variables, `!` and `-` exist. For example, `-(-5)` -> `5`
+-   `true` and `false` are used for booleans
+
 ## Planned Improvements
 
 -   **Interactive REPL:** Create a true Read-Eval-Print Loop so the interpreter can be used interactively from the command line.
 -   **More Data Types:** Add support for strings, lists, and functions.
 -   **Conditional Logic:** Implement `if/else` statements.
+
