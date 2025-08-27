@@ -17,7 +17,7 @@ This is a fully featured interpreter for a simple, readable mathematical languag
     y + 5  // Result: 25
     ```
 
-## Core Project Structure
+## Core Files in Project Structure
 
 -   `Interpreter.py`: Interpreter
 -   `Parser.py`: Contains the tokenizer, turns input into AST(Abstract Syntax Tree)
