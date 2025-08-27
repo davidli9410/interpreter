@@ -84,7 +84,6 @@ Syntax is defined as follows:
 
 ## Planned Improvements
 
--   **Interactive REPL:** Create a true Read-Eval-Print Loop so the interpreter can be used interactively from the command line.
 -   **More Data Types:** Add support for strings, lists, and functions.
 -   **Conditional Logic:** Implement `if/else` statements.
 
