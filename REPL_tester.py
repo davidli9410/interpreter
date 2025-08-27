@@ -4,23 +4,20 @@ from Parser import Parser
 
 class REPL_tester :
     def __init__(self):
+        
         self.interpreter = Interpreter()
         self.parser = Parser()
+
     def start_test(self):
+
         while True:
-            
             expression = input()
-            
             if expression:
                 result = self.interpreter.run(expression)
                 if "define" in self.parser.tokenize(expression):
                     print(f"{self.parser.tokenize(expression)[1]} defined as: {result}")
                 else:
                     print(f"Result of expression: {result}")
-
-
-
-
 
 if __name__ == "__main__":
     print("\033[1m" + "This is the interactive REPL command line tester for my interpreter. At any time, press ^C to exit the REPL" )
