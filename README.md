@@ -12,8 +12,8 @@ This is a fully featured interpreter for a simple, readable mathematical languag
 -   **Comparison Operators:** Supports `equals` (==), `nequals` (!=), `lt` (<), `lte` (<=), `gt` (>), `gte` (>=) for equality and magnitude comparisons.
 -   **Variables:** Allows for variable assignment and usage throughout a session.
     ```
-    define x = 10
-    define y = x * 2
+    define x as 10
+    define y as x * 2
     y + 5  // Result: 25
     ```
 
