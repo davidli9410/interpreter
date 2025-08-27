@@ -1,6 +1,6 @@
 # Simple Readable Mathematical Language Interpreter
 
-This is a fully featured interpreter for a simple, readable mathematical language, built from scratch in Python. This project showcases the implementation of tokenization, parsing, evaluation, and the core principles of how interpreted programming languages work. It also features a REPL(Read Eval Print Loop) for easy user access and experimentation!
+This is a fully featured interpreter for a simple, readable mathematical language, built from scratch in Python. This project showcases the implementation of tokenization, parsing, evaluation, and the core principles of how interpreted programming languages work. It also features a REPL(Read Eval Print Loop) for easy user access and experimentation. Please see bottom for the syntax guide.
 
 ## Features
 
@@ -9,6 +9,7 @@ This is a fully featured interpreter for a simple, readable mathematical languag
 -   **Correct Associativity:** Handles left-associative operators (`+`, `-`, `*`, `/`) and right-associative operators (`^`) correctly.
 -   **Parentheses:** Supports nested parentheses for grouping expressions.
 -   **Unary Operators:** Correctly parses and evaluates unary negation.
+-   **Comparison Operators:** Supports `equals` (==), `nequals` (!=), `lt` (<), `lte` (<=), `gt` (>), `gte` (>=) for equality and magnitude comparisons.
 -   **Variables:** Allows for variable assignment and usage throughout a session.
     ```
     define x = 10
