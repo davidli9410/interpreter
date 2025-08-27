@@ -76,7 +76,7 @@ Syntax is defined as follows:
 
 -   To perform simple arithmetic, simply type the expression out i.e. `2 + 3 * 5` -> `17`
 -   To assign a variable x to a number 5, say `define x as 5`
--   To compare two objects (same as python ==), say, for example, `1 equals 1`
+-   To compare two objects (same as python ==), say `1 equals 1`
 -   In the opposite case, say `1 nequals 1`
 -   To compare values of magnitude i.e. `<, <=, >, >=` in python, say `lt, lte, gt, gte`. For example, `2 gt 3` -> `False`
 -   For unary operators on a single value or variables, `!` and `-` exist. For example, `-(-5)` -> `5`
