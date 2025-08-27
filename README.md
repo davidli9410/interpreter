@@ -66,10 +66,19 @@ An **environment** (a simple dictionary) is passed through the evaluation proces
 The simplest way to see the interpreter in action is to run the test suite.
 
 ```bash
-git clone 
+git clone https://github.com/yourusername/interpreter.git
 cd interpreter
 python REPL_tester.py
 ```
+
+ssh
+
+```bash
+git clone git@github.com:yourusername/interpreter.git
+cd interpreter
+python REPL_tester.py
+```
+
 
 ## Syntax Guide
 
