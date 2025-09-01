@@ -116,7 +116,7 @@ Syntax is defined as follows:
 -   To call the function, say `add(3,4)` -> `7`
 -   To compare two objects (same as python ==), say `1 equals 1`
 -   In the opposite case, say `1 nequals 1`
--   To compare values of magnitude i.e. `<, <=, >, >=` in python, say `lt, lte, gt, gte`. For example, `2 gt 3` -> `False`
+-   To compare values of magnitude i.e. `<, <=, >, >=` in python, say `lt, lte, gt, gte`. For example, `2 gt 3` -> `false`
 -   To print out values, use `display` keyword. For example, assuming `x` is defined as `5`, `display x` -> `5`
 -   For unary operators on a single value or variables, `!` and `-` exist. For example, `-(-5)` -> `5`
 -   `true` and `false` are used for booleans
