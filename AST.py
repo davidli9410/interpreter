@@ -83,7 +83,7 @@ class VariableNode(ASTNode):
     
     def eval(self, env):
         if self.name not in env:
-            raise ValueError(f"Variable not defined: {self.variable}")
+            raise ValueError(f"Variable not defined: {self.name}")
         return env[self.name]
 
 

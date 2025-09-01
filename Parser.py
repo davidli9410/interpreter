@@ -20,8 +20,14 @@ class Parser:
 
         if "define" in tokens and "as" in tokens:
             return self.parse_variable_assignment(tokens)
+        
+        elif tokens[0] == "display":
+            tokens.pop(0)
+            return self.parse_comparison(tokens)
         elif "equals" in tokens or "nequals" in tokens or "lt" in tokens or "lte" in tokens or "gt" in tokens or "gte" in tokens:
             return self.parse_comparison(tokens)
+        
+        
         else:
             return self.parse_low(tokens)
     
