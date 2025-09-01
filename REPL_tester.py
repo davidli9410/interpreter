@@ -14,9 +14,12 @@ class REPL_tester :
             expression = input()
             if expression:
                 result = self.interpreter.run(expression)
-                if "define" in self.parser.tokenize(expression):
+                tokenized = self.parser.tokenize(expression)
+                if "define" in tokenized:
                     continue
-                elif "display" in self.parser.tokenize(expression):
+                if "func" in tokenized:
+                    continue
+                elif "display" in tokenized:
                     print(f"{result}")
                 else:
                     print(f"Result of expression: {result}")
