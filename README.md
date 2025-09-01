@@ -1,4 +1,4 @@
-# Simple Readable Mathematical Language Interpreter
+# RIMlang - A Readable Mathematical Interpreted Language
 
 This is a fully featured interpreter for a simple, readable mathematical language, built from scratch in Python. This project showcases the implementation of tokenization, parsing, evaluation, and the core principles of how interpreted programming languages work. It also features a REPL(Read Eval Print Loop) for easy user access and experimentation. Please see bottom for the syntax guide.
 
