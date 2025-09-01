@@ -10,4 +10,3 @@ class Helpers:
         return token.isalpha()
     def is_boolean(self, token):
         return token in ["true", "false"]
-    

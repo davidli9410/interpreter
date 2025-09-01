@@ -96,3 +96,27 @@ class AssignmentNode(ASTNode):
         ret = self.value.eval(env)
         env[self.variable.name] = ret
         return ret
+    
+class FunctionNode(ASTNode):
+    def __init__(self,name,args,body):
+        self.name = name
+        self.args = args
+        self.body = body
+    def eval(self,env):
+        env[self.name] = self
+        self
+    
+class FunctionCallNode(ASTNode):
+    def __init__(self,name,args):
+        self.name = name
+        self.args = args
+    def eval(self,env):
+        func = env[self.name]
+        arg_values = [arg.eval(env) for arg in self.args]
+        local_env = env.copy()
+        for arg, arg_value in zip(func.args, arg_values) :
+            local_env[arg] = arg_value
+        return func.body.eval(local_env)
+
+
+        

@@ -6,6 +6,8 @@ from AST import NumberNode as n_node
 from AST import AssignmentNode as a_node
 from AST import BooleanNode as b_node
 from AST import ComparisonNode as c_node
+from AST import FunctionCallNode as f_c_node
+from AST import FunctionNode as f_node
 
 
 class Parser:
@@ -17,10 +19,10 @@ class Parser:
     
     def parse_whole(self, expression):
         tokens = self.tokenize(expression)
-
-        if "define" in tokens and "as" in tokens:
+        if tokens[0] == "func":
+            return self.parse_function_def(tokens)
+        elif "define" in tokens and "as" in tokens:
             return self.parse_variable_assignment(tokens)
-        
         elif tokens[0] == "display":
             tokens.pop(0)
             return self.parse_comparison(tokens)
@@ -32,9 +34,44 @@ class Parser:
             return self.parse_low(tokens)
     
     def tokenize(self, expression):
-        processed = expression.replace("+", " + ").replace("-", " - ").replace("*", " * ").replace("=", " = ").replace("/", " / ").replace("^", " ^ ").replace("(", " ( ").replace(")", " ) ")
+        processed = expression.replace("+", " + ").replace("-", " - ").replace("*", " * ").replace("=", " = ").replace("/", " / ").replace("^", " ^ ").replace("(", " ( ").replace(")", " ) ").replace(",", " , ")
         return processed.split()
-    
+    def parse_function_def(self,tokens):
+        tokens.pop(0)
+        name = tokens.pop(0)
+        if tokens.pop(0) != "(" :
+            raise ValueError("Expected ( after function declaration")
+        args = []
+
+        while tokens and tokens[0] != ")":
+            if tokens[0] != ",":
+
+                args.append(tokens.pop(0))
+            else:
+                tokens.pop(0)
+        tokens.pop(0)
+        if tokens and tokens[0] != ":":
+            raise ValueError("Incorrect function declaration")
+        tokens.pop(0)
+        body = self.parse_comparison(tokens)
+        return f_node(name,args,body)
+    def parse_function_call(self,tokens):
+  
+        name = tokens.pop(0)
+        if tokens.pop(0) != "(" :
+            raise ValueError("Expected ( after function declaration")
+        args = []
+
+        while tokens and tokens[0] != ")":
+            if tokens[0] != ",":
+
+                args.append(self.parse_comparison(tokens))
+            else:
+                tokens.pop(0)
+        tokens.pop(0)
+        return f_c_node(name,args)
+
+        return f_c_node(name,args)
     def parse_unary_expression(self, tokens):
         if tokens and tokens[0] in ["-", "!"]:
             token = tokens.pop(0)
@@ -95,8 +132,12 @@ class Parser:
             return b_node(token)
         elif self.helpers.is_number(token):
             return n_node(token)
+        elif tokens and self.helpers.is_variable(token) and tokens[0] == "(":
+            tokens.insert(0,token)
+            return self.parse_function_call(tokens)
         elif self.helpers.is_variable(token):
             return v_node(token)
+
         elif token == "(":
             expression = self.parse_comparison(tokens)
             if not tokens or tokens.pop(0) != ')':
