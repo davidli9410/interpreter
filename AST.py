@@ -6,14 +6,12 @@ from Global import comparison_operations
 class ASTNode:
     pass
 
-
 class NumberNode(ASTNode):
     def __init__(self, value):
         self.value = value
-    
+
     def eval(self, env):
         return float(self.value)
-
 
 class BooleanNode(ASTNode):
     def __init__(self, value):
@@ -26,7 +24,6 @@ class BooleanNode(ASTNode):
             return False
         else:
             raise ValueError(f"Unknown boolean: {self.value}")
-
 
 class ComparisonNode(ASTNode):
     def __init__(self, comparator, left, right):
@@ -44,7 +41,6 @@ class ComparisonNode(ASTNode):
         else:
             raise ValueError(f"Unknown comparator: {self.comparator}")
 
-
 class OperatorNode(ASTNode):
     def __init__(self, operator, left, right):
         self.operator = operator
@@ -61,7 +57,6 @@ class OperatorNode(ASTNode):
         else:
             raise ValueError(f"Unknown comparator: {self.operator}")
 
-
 class UnaryOpNode(ASTNode):
     def __init__(self, operator, operand): 
         self.operator = operator  
@@ -76,7 +71,6 @@ class UnaryOpNode(ASTNode):
         else:
             raise ValueError(f"Unknown comparator: {self.operator}")
 
-
 class VariableNode(ASTNode):
     def __init__(self, name):
         self.name = name
@@ -85,7 +79,6 @@ class VariableNode(ASTNode):
         if self.name not in env:
             raise ValueError(f"Variable not defined: {self.name}")
         return env[self.name]
-
 
 class AssignmentNode(ASTNode):
     def __init__(self, variable, value):
@@ -104,7 +97,7 @@ class FunctionNode(ASTNode):
         self.body = body
     def eval(self,env):
         env[self.name] = self
-        self
+        return self
     
 class FunctionCallNode(ASTNode):
     def __init__(self,name,args):

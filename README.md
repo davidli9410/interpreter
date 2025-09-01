@@ -11,10 +11,17 @@ This is a fully featured interpreter for a simple, readable mathematical languag
 -   **Unary Operators:** Correctly parses and evaluates unary negation.
 -   **Comparison Operators:** Supports `equals` (==), `nequals` (!=), `lt` (<), `lte` (<=), `gt` (>), `gte` (>=) for equality and magnitude comparisons.
 -   **Variables:** Allows for variable assignment and usage throughout a session.
+
     ```
     define x as 10
     define y as x * 2
-    y + 5  // Result: 25
+    display y + 5  // Result: 25
+    ```
+-   **Function Declaration**: Allows for function declaration which uses local environment variables to evaluate function calls.
+    ```
+    func add(x,y): x + y
+    func mul(x,y): x * y
+    mul(add(3,4),3) // Result: 21
     ```
 
 ## Core Files in Project Structure
@@ -41,6 +48,7 @@ Parser -> Abstract Syntax Tree
     -   `parse_low` handles `+` and `-`.
     -   `parse_comparison` handles `equals`, `nequals`, `lt`, `lte`, `gt`, `gte`.
     -   `parse_variable_assignment` handles variable definition.
+    -   `parse_function_call` and `parse_function_def` handle defining functions and calling them
     
     All these parsing functions are called in a hierarchical order such that each expression is evaluated in accordance to operator precedence.
 
@@ -70,6 +78,9 @@ Once the AST is built, the evaluation is a simple recursive process.
     -   A `NumberNode` simply returns its value.
     -   A `VariableNode` looks up its value in the environment.
     -   An `OperatorNode` recursively calls `.eval()` on its left and right children to get their values, and then performs the specified operation.
+    -   An `AssignmentNode` assigns a value to a name in env
+    -   A `FunctionNode` simply defines a function in the environment with a name, arguments, and a body(similar to a variable)
+    -   A `FunctionCallNode` evaluates function calls with a local environment containing user given args. It uses this local environment then evaluates expressions with variables contained in the local environment.
 -   The final result bubbles back up the tree to the root, which is then returned to the user.
 
 An **environment** (a simple dictionary) is passed through the evaluation process to keep track of variable assignments.
@@ -101,6 +112,8 @@ Syntax is defined as follows:
 
 -   To perform simple arithmetic, simply type the expression out i.e. `2 + 3 * 5` -> `17`
 -   To assign a variable x to a number 5, say `define x as 5`
+-   To define a function, say `func add(x,y): x + y`
+-   To call the function, say `add(3,4)` -> `7`
 -   To compare two objects (same as python ==), say `1 equals 1`
 -   In the opposite case, say `1 nequals 1`
 -   To compare values of magnitude i.e. `<, <=, >, >=` in python, say `lt, lte, gt, gte`. For example, `2 gt 3` -> `False`
@@ -111,6 +124,6 @@ Syntax is defined as follows:
 
 ## Planned Improvements
 
--   **More Data Types:** Add support for strings, lists, and functions.
+-   **More Data Types:** Add support for strings, lists, and other data types.
 -   **Conditional Logic:** Implement `if/else` statements.
 

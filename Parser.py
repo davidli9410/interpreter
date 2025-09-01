@@ -28,24 +28,21 @@ class Parser:
             return self.parse_comparison(tokens)
         elif "equals" in tokens or "nequals" in tokens or "lt" in tokens or "lte" in tokens or "gt" in tokens or "gte" in tokens:
             return self.parse_comparison(tokens)
-        
-        
         else:
             return self.parse_low(tokens)
     
     def tokenize(self, expression):
         processed = expression.replace("+", " + ").replace("-", " - ").replace("*", " * ").replace("=", " = ").replace("/", " / ").replace("^", " ^ ").replace("(", " ( ").replace(")", " ) ").replace(",", " , ")
         return processed.split()
+    
     def parse_function_def(self,tokens):
         tokens.pop(0)
         name = tokens.pop(0)
         if tokens.pop(0) != "(" :
             raise ValueError("Expected ( after function declaration")
         args = []
-
         while tokens and tokens[0] != ")":
             if tokens[0] != ",":
-
                 args.append(tokens.pop(0))
             else:
                 tokens.pop(0)
@@ -55,29 +52,25 @@ class Parser:
         tokens.pop(0)
         body = self.parse_comparison(tokens)
         return f_node(name,args,body)
+    
     def parse_function_call(self,tokens):
-  
         name = tokens.pop(0)
         if tokens.pop(0) != "(" :
             raise ValueError("Expected ( after function declaration")
         args = []
-
         while tokens and tokens[0] != ")":
             if tokens[0] != ",":
-
                 args.append(self.parse_comparison(tokens))
             else:
                 tokens.pop(0)
         tokens.pop(0)
         return f_c_node(name,args)
-
-        return f_c_node(name,args)
+    
     def parse_unary_expression(self, tokens):
         if tokens and tokens[0] in ["-", "!"]:
             token = tokens.pop(0)
             operand = self.parse_unary_expression(tokens)
             return u_op_node(token, operand)
-        
         return self.parse_basic(tokens)
     
     def parse_high(self, tokens):
@@ -125,19 +118,16 @@ class Parser:
     def parse_basic(self, tokens):
         if not tokens:
             raise ValueError("Unexpected Termination")
-        
         token = tokens.pop(0)
-        
         if self.helpers.is_boolean(token):
             return b_node(token)
         elif self.helpers.is_number(token):
             return n_node(token)
-        elif tokens and self.helpers.is_variable(token) and tokens[0] == "(":
+        elif tokens and self.helpers.is_variable(token) and tokens[0] == "(": #is function call, ex. add(x,y)
             tokens.insert(0,token)
             return self.parse_function_call(tokens)
         elif self.helpers.is_variable(token):
             return v_node(token)
-
         elif token == "(":
             expression = self.parse_comparison(tokens)
             if not tokens or tokens.pop(0) != ')':
