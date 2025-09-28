@@ -36,6 +36,7 @@ class Parser:
     def parse_function_def(self,tokens):
         tokens.pop(0)
         name = tokens.pop(0)
+        print(tokens)
         if tokens.pop(0) != "(" :
             raise ValueError("Expected ( after function declaration")
         args = []
