@@ -13,8 +13,6 @@ from AST import FunctionNode as f_node
 class Parser:
     def __init__(self):
         self.operators = ['+', '-', '*', '/', '^']
-        self.precedence = {"^": 4, "*": 3, "/": 3, "+": 2, "-": 2}
-        self.associativity = {"^": "right", "*": "left", "/": "left", "+": "left", "-": "left"}
         self.helpers = Helpers()
     
     def parse_whole(self, expression):
@@ -32,7 +30,7 @@ class Parser:
             return self.parse_low(tokens)
     
     def tokenize(self, expression):
-        processed = expression.replace("+", " + ").replace("-", " - ").replace("*", " * ").replace("=", " = ").replace("/", " / ").replace("^", " ^ ").replace("(", " ( ").replace(")", " ) ").replace(",", " , ")
+        processed = expression.replace("+", " + ").replace("-", " - ").replace("*", " * ").replace("=", " = ").replace("/", " / ").replace("^", " ^ ").replace("(", " ( ").replace(")", " ) ").replace(",", " , ").replace(":"," : ")
         return processed.split()
     
     def parse_function_def(self,tokens):
@@ -46,7 +44,10 @@ class Parser:
                 args.append(tokens.pop(0))
             else:
                 tokens.pop(0)
+        print(tokens)
         tokens.pop(0)
+        while tokens and tokens[0] == " ":
+            tokens.pop()
         if tokens and tokens[0] != ":":
             raise ValueError("Incorrect function declaration")
         tokens.pop(0)
