@@ -1,5 +1,5 @@
-from Parser import Parser
-from Evaluator import Evaluator
+from .Parser import Parser
+from .Evaluator import Evaluator
 
 class Interpreter:
     def __init__(self):

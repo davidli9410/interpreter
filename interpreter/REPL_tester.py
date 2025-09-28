@@ -1,5 +1,5 @@
-from Interpreter import Interpreter
-from Parser import Parser
+from .Interpreter import Interpreter
+from .Parser import Parser
 
 
 class REPL_tester :

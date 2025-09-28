@@ -1,11 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import '../styles/main.css';
+import runCode from "./runCode";
+
 
 function MainPage () {
     const [inputText, setInputText] = useState('')
     const [outputText, setOutputText] = useState('')
     const navigate = useNavigate()
+
+    const handleRunCode = async () => {
+        setOutputText("Executing...")
+        const result = await runCode(inputText)
+
+        setOutputText(result.result || 'No output');
+
+    }
+
+    
     
     return (
         <div className="editor-container">
@@ -36,10 +48,7 @@ function MainPage () {
                 </div>
                 <button
                     className="run-button"
-                    onClick={() => {
-                        // Add your run code logic here
-                        setOutputText("Code executed!")
-                    }}
+                    onClick={handleRunCode}
                 >
                     Run Code
                 </button>

@@ -1,6 +1,6 @@
-from Global import arithmetic_operations_binary
-from Global import arithmetic_operations_unary
-from Global import comparison_operations
+from .Global import arithmetic_operations_binary
+from .Global import arithmetic_operations_unary
+from .Global import comparison_operations
 
 
 class ASTNode:

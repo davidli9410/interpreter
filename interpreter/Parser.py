@@ -1,13 +1,13 @@
-from Helpers import Helpers
-from AST import OperatorNode as bin_op_node
-from AST import UnaryOpNode as u_op_node
-from AST import VariableNode as v_node
-from AST import NumberNode as n_node
-from AST import AssignmentNode as a_node
-from AST import BooleanNode as b_node
-from AST import ComparisonNode as c_node
-from AST import FunctionCallNode as f_c_node
-from AST import FunctionNode as f_node
+from .Helpers import Helpers
+from .AST import OperatorNode as bin_op_node
+from .AST import UnaryOpNode as u_op_node
+from .AST import VariableNode as v_node
+from .AST import NumberNode as n_node
+from .AST import AssignmentNode as a_node
+from .AST import BooleanNode as b_node
+from .AST import ComparisonNode as c_node
+from .AST import FunctionCallNode as f_c_node
+from .AST import FunctionNode as f_node
 
 
 class Parser:

@@ -1,4 +1,4 @@
-from Interpreter import Interpreter
+from .Interpreter import Interpreter
 
 class Tester:
 
