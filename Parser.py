@@ -44,7 +44,6 @@ class Parser:
                 args.append(tokens.pop(0))
             else:
                 tokens.pop(0)
-        print(tokens)
         tokens.pop(0)
         while tokens and tokens[0] == " ":
             tokens.pop()
