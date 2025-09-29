@@ -28,14 +28,18 @@
 }
 
 .button-container {
+    gap:20px;
+    
     height: 60px;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
 .main-button {
     padding: 12px 24px;
+
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
@@ -47,6 +51,7 @@
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(30px);
+
 }
 
 .main-button.button-visible {
@@ -58,4 +63,8 @@
 .main-button:hover {
     background-color: white;
     color: #333;
+}
+.button {
+    text-align: center;
+    padding-left: 20px;
 }

@@ -29,7 +29,10 @@ def main():
         for line in lines:
             if line.startswith('display'):
                 result = interpreter.run(line)
-                output.append(str(result))
+                if isinstance(result, bool):
+                    output.append(str(result).lower())
+                else:
+                    output.append(str(result))
             else:
                 result = interpreter.run(line)
             

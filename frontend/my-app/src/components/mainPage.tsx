@@ -23,12 +23,20 @@ function MainPage () {
         <div className="editor-container">
             <div className="header">
                 <h1>RIMLang Editor</h1>
-                <button 
-                    className="back-button" 
-                    onClick={() => navigate('/')}
-                >
-                    Home
-                </button>
+                <div className="button-group">
+                    <button 
+                        className="back-button" 
+                        onClick={() => navigate('/info')}
+                    >
+                        Syntax Guide
+                    </button>
+                    <button 
+                        className="back-button" 
+                        onClick={() => navigate('/')}
+                    >
+                        Home
+                    </button>
+                </div>
             </div>
             
             <div>

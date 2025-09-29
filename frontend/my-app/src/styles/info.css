@@ -1,0 +1,95 @@
+.container {
+    color:white;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+.header {
+    color:white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+}
+
+.header h1 {
+    margin: 0;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.nav-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.nav-button:hover {
+    background-color: white;
+    color:#333;
+    transform: translateY(-1px);
+}
+
+.nav-button:active {
+    transform: translateY(0);
+}
+
+.syntax-guide {
+    line-height: 1.6;
+}
+
+.intro {
+    font-size: 1.1rem;
+    color: white;
+    font-style: italic;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.syntax-guide h2 {
+    color: white;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.syntax-section {
+    color: white;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 8px;
+    border-left: 4px solid #333;
+}
+
+.syntax-section h3 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.syntax-section p {
+    margin: 8px 0;
+    color: white;
+}
+
+.syntax-section code {
+    background-color: #3d3737;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    display: inline-block;
+    margin: 4px 0;
+}

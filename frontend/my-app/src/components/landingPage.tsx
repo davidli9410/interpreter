@@ -60,7 +60,12 @@ function LandingPage() {
                     <button className={`main-button ${buttonVisible ? 'button-visible' : ''}`} onClick={() => navigate('/main')}>
                         Try it out
                     </button>
-                )}
+            )}
+            {showButton && (
+                <button className={`main-button ${buttonVisible ? 'button-visible' : ''}`} onClick={() => navigate('/info')}>
+                    Syntax Guide
+                </button>
+            )}
             </div>
         </div>
     )
