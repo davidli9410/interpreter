@@ -15,7 +15,7 @@ def main():
     
     time.sleep(2)
     
-    frontend_process = subprocess.Popen(["npm", "run", "dev"], cwd="frontend/my-app")
+    frontend_process = subprocess.Popen(["npm", "run", "dev"], cwd="frontend/app")
     
     try:
         backend_process.wait()
