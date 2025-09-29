@@ -88,13 +88,16 @@ An **environment** (a simple dictionary) is passed through the evaluation proces
 
 ## How to Run
 
-The simplest way to see the interpreter in action is to run the test suite.
-
 -   HTTPS
 ```bash
 git clone https://github.com/yourusername/interpreter.git
 cd interpreter/interpreter
-python REPL_tester.py
+cd backend
+pip install flask flask-cors
+cd ../frontend
+npm install
+cd ..
+python startApp.py
 ```
 
 -   SSH
@@ -102,7 +105,12 @@ python REPL_tester.py
 ```bash
 git clone git@github.com:yourusername/interpreter.git
 cd interpreter/interpreter
-python REPL_tester.py
+cd backend
+pip install flask flask-cors
+cd ../frontend/my-app
+npm install
+cd ..
+python startApp.py
 ```
 
 
