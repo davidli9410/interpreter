@@ -91,7 +91,7 @@ An **environment** (a simple dictionary) is passed through the evaluation proces
 -   HTTPS
 ```bash
 git clone https://github.com/yourusername/interpreter.git
-cd interpreter/interpreter
+cd interpreter
 cd backend
 pip install flask flask-cors
 cd ../frontend/app
@@ -104,7 +104,7 @@ python startApp.py
 
 ```bash
 git clone git@github.com:yourusername/interpreter.git
-cd interpreter/interpreter
+cd interpreter
 cd backend
 pip install flask flask-cors
 cd ../frontend/app
