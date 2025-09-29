@@ -94,7 +94,7 @@ git clone https://github.com/yourusername/interpreter.git
 cd interpreter/interpreter
 cd backend
 pip install flask flask-cors
-cd ../frontend
+cd ../frontend/app
 npm install
 cd ..
 python startApp.py
@@ -107,7 +107,7 @@ git clone git@github.com:yourusername/interpreter.git
 cd interpreter/interpreter
 cd backend
 pip install flask flask-cors
-cd ../frontend/my-app
+cd ../frontend/app
 npm install
 cd ..
 python startApp.py
